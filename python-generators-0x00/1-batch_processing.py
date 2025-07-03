@@ -15,8 +15,11 @@ def stream_users_in_batches(batch_size):
                 break
             yield batch
     finally:
-        cursor.close()
-        connection.close()
+        if cursor:
+            cursor.close()
+        if connection:
+            connection.close()
+
 
 def batch_processing(batch_size):
     """Process batches and print users over age 25."""
@@ -24,3 +27,4 @@ def batch_processing(batch_size):
         for user in batch:
             if user.get("age", 0) > 25:
                 print(user)
+    return "Batch processing completed"
