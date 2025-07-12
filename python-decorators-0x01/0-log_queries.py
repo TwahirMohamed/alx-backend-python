@@ -1,5 +1,6 @@
 import sqlite3
 import functools
+from datetime import datetime
 
 #### decorator to lof SQL queries
 # Complete the code below by writing a decorator log_queries that logs the SQL query before executing it.
@@ -21,13 +22,6 @@ def log_queries(func):
         func()
     return wrapper
         
-    
- 
- 
-
-
-#""" YOUR CODE GOES HERE"""
-
 @log_queries
 def fetch_all_users(query):
     conn = sqlite3.connect('users.db')
